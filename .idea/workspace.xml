@@ -144,7 +144,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "库",
+    "project.structure.last.edited": "工件",
     "project.structure.proportion": "0.15234375",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
@@ -260,7 +260,7 @@
       <updated>1736847491620</updated>
       <workItem from="1736847492794" duration="1726000" />
       <workItem from="1736849453173" duration="4387000" />
-      <workItem from="1736883745355" duration="27254000" />
+      <workItem from="1736883745355" duration="31726000" />
     </task>
     <servers />
   </component>

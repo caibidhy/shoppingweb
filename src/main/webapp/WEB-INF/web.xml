@@ -29,14 +29,6 @@
         <url-pattern>/products</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>CartServlet</servlet-name>
-        <servlet-class>servlet.CartServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CartServlet</servlet-name>
-        <url-pattern>/cart</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>

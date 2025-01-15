@@ -1,4 +1,4 @@
-const contextPath = '';  // 移除 '/shopping'
+const contextPath = '/shoppingweb_Web_exploded';
 
 function addToCart(productId) {
     if (!productId) {
@@ -6,7 +6,7 @@ function addToCart(productId) {
         return;
     }
 
-    fetch(`${contextPath}/cart`, {
+    fetch(`${contextPath}/shopping/cart`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -40,7 +40,7 @@ function removeFromCart(productId) {
         return;
     }
 
-    fetch(`${contextPath}/cart`, {
+    fetch(`${contextPath}/shopping/cart`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -67,7 +67,7 @@ function removeFromCart(productId) {
 }
 
 function checkout() {
-    fetch(`${contextPath}/cart`, {
+    fetch(`${contextPath}/shopping/cart`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
