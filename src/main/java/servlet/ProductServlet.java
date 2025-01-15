@@ -1,29 +1,35 @@
 package servlet;
 
-import java.io.IOException;
-import java.util.List;
+import dao.ProductDAO;  // 需要import
+import model.Product;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Product;
+
+import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/shopping/products")
 public class ProductServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+
+    private ProductDAO productDAO = new ProductDAO();
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Product> products = getProductList();
+
+        // 1. 通过DAO获取数据库中的商品列表
+        List<Product> products = productDAO.findAll();
+
+        // 2. 放进 request attribute
         request.setAttribute("products", products);
+
+        // 3. 转发到 JSP 显示
         request.getRequestDispatcher("/jsp/product-list.jsp").forward(request, response);
     }
-    
-    private List<Product> getProductList() {
-        return List.of(
-            new Product(1, "Product 1", 19.99, "Description 1"),
-            new Product(2, "Product 2", 29.99, "Description 2"),
-            new Product(3, "Product 3", 39.99, "Description 3")
-        );
-    }
 }
+
 

@@ -1,150 +1,126 @@
 package servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import dao.CartDAO;
+import dao.UserDAO;         // 新增：记得导入你的 UserDAO
+import model.CartItemDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Cart;
-import model.Product;
-import util.DatabaseUtil;
+
+import java.math.BigDecimal;
+import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 @WebServlet("/shopping/cart")
 public class CartServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(CartServlet.class.getName());
+    private CartDAO cartDAO = new CartDAO();
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
+        String username = (String) session.getAttribute("username");
+
+        if (username == null) {
+            request.setAttribute("cartMessage", "Please login first to see your cart.");
+            request.getRequestDispatcher("/jsp/cart.jsp").forward(request, response);
+            return;
         }
-        LOGGER.info("Cart items in doGet: " + cart.getItems());
+
+        int userId = getUserIdByUsername(username);
+
+        // 查到所有购物车项
+        List<CartItemDTO> cartItems = cartDAO.findCartItemsByUser(userId);
+        request.setAttribute("cartItems", cartItems);
+
+        // 这里计算总价
+        BigDecimal totalPrice = BigDecimal.ZERO;
+        for (CartItemDTO item : cartItems) {
+            // item.getPrice() * item.getQuantity()
+            BigDecimal lineTotal = item.getPrice().multiply(new BigDecimal(item.getQuantity()));
+            totalPrice = totalPrice.add(lineTotal);
+        }
+        // 存到 request 让 JSP 使用
+        request.setAttribute("totalPrice", totalPrice);
+
         request.getRequestDispatcher("/jsp/cart.jsp").forward(request, response);
     }
 
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String action = request.getParameter("action");
-            LOGGER.info("Received action: " + action);
-            LOGGER.info("Product ID: " + request.getParameter("productId"));
-            if (action == null) {
-                sendErrorResponse(response, "Invalid action");
-                return;
+
+        String action = request.getParameter("action");
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+
+        // 若未登录，则在cart.jsp提示
+        if (username == null) {
+            request.setAttribute("cartMessage", "Please login first!");
+            request.getRequestDispatcher("/jsp/cart.jsp").forward(request, response);
+            return;
+        }
+
+        int userId = getUserIdByUsername(username);
+
+        if ("add".equals(action)) {
+            // 添加商品到购物车
+            try {
+                int productId = Integer.parseInt(request.getParameter("productId"));
+                int oldQty = cartDAO.findCartQuantity(userId, productId);
+                if (oldQty >= 1) {
+                    cartDAO.updateCartItemQuantity(userId, productId, oldQty + 1);
+                } else {
+                    cartDAO.addCartItem(userId, productId, 1);
+                }
+                session.setAttribute("cartMessage", "Product added to cart successfully!");
+            } catch (NumberFormatException e) {
+                LOGGER.warning("Invalid productId: " + e.getMessage());
+                session.setAttribute("cartMessage", "Invalid product ID!");
             }
+            response.sendRedirect(request.getContextPath() + "/shopping/cart");
+            return;
 
-            HttpSession session = request.getSession();
-            Cart cart = (Cart) session.getAttribute("cart");
-
-            if (cart == null) {
-                cart = new Cart();
-                session.setAttribute("cart", cart);
+        } else if ("remove".equals(action)) {
+            // 移除购物车商品
+            try {
+                int productId = Integer.parseInt(request.getParameter("productId"));
+                cartDAO.removeCartItem(userId, productId);
+                session.setAttribute("cartMessage", "Product removed from cart successfully");
+            } catch (NumberFormatException e) {
+                LOGGER.warning("Invalid productId: " + e.getMessage());
+                session.setAttribute("cartMessage", "Invalid product ID!");
             }
+            response.sendRedirect(request.getContextPath() + "/shopping/cart");
+            return;
 
-            LOGGER.info("Cart items before action: " + cart.getItems());
+        } else if ("update".equals(action)) {
+            // 可自行扩展：更新商品数量等
+            response.sendRedirect(request.getContextPath() + "/shopping/cart");
+            return;
 
-            String username = (String) session.getAttribute("username");
-            String responseMessage = "";
-            boolean success = false;
-
-            switch (action) {
-                case "add":
-                    try {
-                        int productId = Integer.parseInt(request.getParameter("productId"));
-                        cart.addItem(productId, 1);
-
-                        if (username != null) {
-                            DatabaseUtil.saveCartItems(username, cart.getItems());
-                        }
-
-                        success = true;
-                        responseMessage = "Product added to cart successfully!";
-                        session.setAttribute("cartMessage", responseMessage);
-                        response.sendRedirect(request.getContextPath() + "/shopping/cart");
-                        return;
-                    } catch (NumberFormatException e) {
-                        responseMessage = "Invalid product ID";
-                        sendErrorResponse(response, responseMessage);
-                        return;
-                    }
-
-                case "remove":
-                    try {
-                        int productId = Integer.parseInt(request.getParameter("productId"));
-                        LOGGER.info("Removing product: " + productId);
-                        cart.removeItem(productId);
-
-                        if (username != null) {
-                            DatabaseUtil.saveCartItems(username, cart.getItems());
-                        }
-
-                        success = true;
-                        responseMessage = "Product removed from cart successfully";
-                        LOGGER.info("Cart items after removal: " + cart.getItems());
-                        sendSuccessResponse(response, responseMessage);
-                        return;
-                    } catch (NumberFormatException e) {
-                        LOGGER.log(Level.SEVERE, "Invalid product ID", e);
-                        responseMessage = "Invalid product ID";
-                        sendErrorResponse(response, responseMessage);
-                        return;
-                    } catch (Exception e) {
-                        LOGGER.log(Level.SEVERE, "Failed to remove product from cart", e);
-                        responseMessage = "Failed to remove product from cart";
-                        sendErrorResponse(response, responseMessage);
-                        return;
-                    }
-
-                case "checkout":
-                    if (username == null) {
-                        responseMessage = "Please login first";
-                        sendErrorResponse(response, responseMessage);
-                        return;
-                    } else {
-                        success = true;
-                        responseMessage = "Checkout successful";
-                        session.setAttribute("cartMessage", responseMessage);
-                        response.sendRedirect(request.getContextPath() + "/shopping/cart");
-                        return;
-                    }
-
-                default:
-                    sendErrorResponse(response, "Invalid action");
-                    return;
-            }
-
-        } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "An error occurred", e);
-            sendErrorResponse(response, "An error occurred");
+        } else {
+            // 未知的action
+            session.setAttribute("cartMessage", "Unknown action!");
+            response.sendRedirect(request.getContextPath() + "/shopping/cart");
         }
     }
 
-    private void sendErrorResponse(HttpServletResponse response, String message)
-            throws IOException {
-        response.setContentType("application/json;charset=UTF-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        PrintWriter out = response.getWriter();
-        out.write("{\"success\":false,\"message\":\"" + message + "\"}");
-        out.flush();
-    }
 
-    private void sendSuccessResponse(HttpServletResponse response, String message)
-            throws IOException {
-        response.setContentType("application/json;charset=UTF-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        PrintWriter out = response.getWriter();
-        out.write("{\"success\":true,\"message\":\"" + message + "\"}");
-        out.flush();
+    private int getUserIdByUsername(String username) {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getUserIdByUsername(username);
     }
 }
+
+
 
 
 
