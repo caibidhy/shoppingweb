@@ -11,20 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="199b5dae-b05e-4ea6-abea-34d19808298c" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/../shoppingweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/CartServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/CartServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/ProductServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shoppingweb/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shoppingweb/servlet/CartServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/CartServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shoppingweb/servlet/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/ProductServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/CartServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/CartServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/ProductServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/product-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/product-list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +190,7 @@
       <workItem from="1736847492794" duration="1726000" />
       <workItem from="1736849453173" duration="4387000" />
       <workItem from="1736883745355" duration="31726000" />
-      <workItem from="1736973557404" duration="6659000" />
+      <workItem from="1736973557404" duration="7032000" />
     </task>
     <servers />
   </component>

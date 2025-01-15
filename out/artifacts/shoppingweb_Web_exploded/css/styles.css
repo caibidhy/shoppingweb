@@ -357,38 +357,94 @@ footer {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 
-    .cart-item-content {
-        flex-direction: column;
+    /* 让外层 cart 容器有类似白色背景、阴影和一些内边距 */
+    .cart-container {
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    /* 空状态时的样式 */
+    .cart-empty-state {
         text-align: center;
-        padding: 1rem;
+        padding: 40px 0;
     }
 
-    .cart-item-image {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 1rem;
+    /* 让文字或按钮在中间 */
+    .cart-empty-state p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    .cart-empty-state .cta-button {
+        padding: 10px 20px;
+        background-color: #007bff; /* or your brand color */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
     }
 
-    .cart-item-details {
-        margin-bottom: 1rem;
+    /* 商品列表区域 */
+    .cart-items {
+        margin-bottom: 20px;
     }
-
-    .remove-button {
-        width: 100%;
-    }
-
     .cart-item {
-        flex-direction: column;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        background: #f9f9f9;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    .cart-item-image {
+        width: 100px;
+        height: auto;
+        margin-right: 15px;
+    }
+    .cart-item-details h3 {
+        margin: 0 0 8px;
+    }
+    .cart-item-details p {
+        margin: 4px 0;
+    }
+    .remove-button {
+        margin-left: auto; /* 将移除按钮推到最右 */
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .remove-button:hover {
+        opacity: 0.9;
     }
 
-    .cart-item img {
-        margin-right: 0;
-        margin-bottom: 1rem;
+    /* 底部操作区 */
+    .cart-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
-    .cart-actions {
-        flex-direction: column;
+    .cart-actions .checkout-button {
+        background-color: #28a745;
+        color: #fff;
+        margin-right: 10px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .cart-actions .continue-shopping {
+        color: #007bff;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+    .cart-total-display {
+        font-size: 1.2rem;
+        font-weight: bold;
     }
 
     .floating-notification {
