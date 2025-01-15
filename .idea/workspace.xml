@@ -10,6 +10,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199b5dae-b05e-4ea6-abea-34d19808298c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/shoppingweb_Web_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jakarta_servlet_api_6_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Cart$CartItem.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Cart.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/CartServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/LoginServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/LogoutServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/ProductServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/RegisterServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/util/DatabaseUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/lib/jakarta.servlet.jsp-api-3.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-3.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/lib/mysql-connector-j-8.0.33.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/cart.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/product-list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/register.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Cart$CartItem.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Cart.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/CartServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/LoginServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/LogoutServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/ProductServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/RegisterServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/util/DatabaseUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingweb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/CartServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LogoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ProductServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/RegisterServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp-api-3.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-3.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.0.33.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/cart.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/product-list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoppingweb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +140,11 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql_aurora"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -177,7 +251,7 @@
       <updated>1736847491620</updated>
       <workItem from="1736847492794" duration="1726000" />
       <workItem from="1736849453173" duration="4387000" />
-      <workItem from="1736883745355" duration="5339000" />
+      <workItem from="1736883745355" duration="8854000" />
     </task>
     <servers />
   </component>

@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import util.DatabaseUtil;
 
 @WebServlet("/shopping/register")
@@ -28,21 +29,24 @@ public class RegisterServlet extends HttpServlet {
 
         // 检查用户名是否已存在
         if (DatabaseUtil.isUsernameExists(username)) {
-            request.setAttribute("error", "Username already exists");
+            request.setAttribute("error", "Username already exists. Please choose a different username.");
             request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);
             return;
         }
 
         // 检查邮箱是否已存在
-        if (DatabaseUtil.isEmailExists(email)) {
+        // Remove this block
+        /*if (DatabaseUtil.isEmailExists(email)) {
             request.setAttribute("error", "Email already exists");
             request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);
             return;
-        }
+        }*/
 
         // 注册用户
         if (DatabaseUtil.registerUser(username, email, password)) {
-            // 注册成功，重定向到登录页面
+            // 注册成功，设置成功消息并重定向到登录页面
+            HttpSession session = request.getSession();
+            session.setAttribute("successMessage", "Registration successful! Please login with your credentials.");
             response.sendRedirect(request.getContextPath() + "/shopping/login");
         } else {
             request.setAttribute("error", "Registration failed");
@@ -55,6 +59,12 @@ public class RegisterServlet extends HttpServlet {
         request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);
     }
 }
+
+
+
+
+
+
 
 
 

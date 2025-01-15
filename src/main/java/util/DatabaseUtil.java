@@ -29,7 +29,6 @@ public class DatabaseUtil {
         }
     }
 
-    // 更新：注册用户方法，添加email参数
     public static boolean registerUser(String username, String email, String password) {
         String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         try (Connection conn = getConnection();
@@ -44,7 +43,6 @@ public class DatabaseUtil {
         }
     }
 
-    // 更新：检查用户名是否已存在
     public static boolean isUsernameExists(String username) {
         String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
         try (Connection conn = getConnection();
@@ -61,24 +59,10 @@ public class DatabaseUtil {
         return false;
     }
 
-    // 新增：检查邮箱是否已存在
-    public static boolean isEmailExists(String email) {
-        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
-        try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, email);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt(1) > 0;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
-    // 保持原有的验证用户登录方法不变
+
+    // Remove the isEmailExists method as it's no longer needed
+
     public static boolean validateUser(String username, String password) {
         String sql = "SELECT password FROM users WHERE username = ?";
         try (Connection conn = getConnection();
@@ -96,6 +80,10 @@ public class DatabaseUtil {
         return false;
     }
 }
+
+
+
+
 
 
 
