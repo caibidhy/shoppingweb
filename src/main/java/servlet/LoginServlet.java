@@ -1,12 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Cart;
 import util.DatabaseUtil;
 
 @WebServlet("/shopping/login")
@@ -16,14 +18,32 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // 验证用户名和密码
         if (DatabaseUtil.validateUser(username, password)) {
-            // 登录成功，创建session
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
+
+            // 处理购物车同步
+            Cart sessionCart = (Cart) session.getAttribute("cart");
+            Map<Integer, Integer> dbCart = DatabaseUtil.getCartItems(username);
+
+            if (sessionCart == null) {
+                sessionCart = new Cart();
+            }
+
+            if (!dbCart.isEmpty()) {
+                // 如果数据库中有购物车数据，使用数据库中的数据
+                sessionCart.clear();
+                for (Map.Entry<Integer, Integer> entry : dbCart.entrySet()) {
+                    sessionCart.addItem(entry.getKey(), entry.getValue());
+                }
+            } else if (!sessionCart.getItems().isEmpty()) {
+                // 如果数据库中没有数据，但会话中有，保存到数据库
+                DatabaseUtil.saveCartItems(username, sessionCart.getItems());
+            }
+
+            session.setAttribute("cart", sessionCart);
             response.sendRedirect(request.getContextPath() + "/shopping");
         } else {
-            // 登录失败
             request.setAttribute("error", "Invalid username or password");
             request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
         }
@@ -34,6 +54,8 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
     }
 }
+
+
 
 
 

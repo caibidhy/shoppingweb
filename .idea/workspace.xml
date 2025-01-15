@@ -11,12 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="199b5dae-b05e-4ea6-abea-34d19808298c" name="更改" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/shoppingweb_Web_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_10_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/jakarta_servlet_api_6_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_33.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Cart$CartItem.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Cart.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/Product.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/model/User.class" afterDir="false" />
@@ -42,7 +45,6 @@
       <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/login.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/product-list.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/register.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Cart$CartItem.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Cart.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/Product.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/shoppingweb/model/User.class" afterDir="false" />
@@ -85,6 +87,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -129,7 +138,7 @@
     "Tomcat 服务器.Tomcat 10.1.34.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dhy15/Desktop/201/shoppingweb-master",
+    "last_opened_file_path": "C:/Users/dhy15/Desktop/201/shoppingweb-master/src/main/webapp/WEB-INF/lib/objenesis-3.2.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -251,7 +260,7 @@
       <updated>1736847491620</updated>
       <workItem from="1736847492794" duration="1726000" />
       <workItem from="1736849453173" duration="4387000" />
-      <workItem from="1736883745355" duration="8854000" />
+      <workItem from="1736883745355" duration="27254000" />
     </task>
     <servers />
   </component>

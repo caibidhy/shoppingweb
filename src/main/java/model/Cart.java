@@ -1,57 +1,45 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
-    private int userId;
-    private List<CartItem> items;
+    private Map<Integer, Integer> items; // productId -> quantity
 
-    public Cart(int userId) {
-        this.userId = userId;
-        this.items = new ArrayList<>();
+    public Cart() {
+        this.items = new HashMap<>();
     }
 
-    public void addItem(Product product) {
-        for (CartItem item : items) {
-            if (item.getProduct().getId() == product.getId()) {
-                item.setQuantity(item.getQuantity() + 1);
-                return;
-            }
-        }
-        items.add(new CartItem(product, 1));
+    public void addItem(int productId, int quantity) {
+        items.put(productId, items.getOrDefault(productId, 0) + quantity);
     }
 
     public void removeItem(int productId) {
-        items.removeIf(item -> item.getProduct().getId() == productId);
+        items.remove(productId);
     }
 
-    public List<CartItem> getItems() {
-        return items;
+    public void clear() {
+        items.clear();
     }
 
-    public int getUserId() {
-        return userId;
+    public Map<Integer, Integer> getItems() {
+        return new HashMap<>(items);
     }
 
-    public double getTotal() {
-        return items.stream()
-                .mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity())
-                .sum();
+    public void setItems(Map<Integer, Integer> items) {
+        this.items = new HashMap<>(items);
     }
 
-    public static class CartItem {
-        private Product product;
-        private int quantity;
+    public int getQuantity(int productId) {
+        return items.getOrDefault(productId, 0);
+    }
 
-        public CartItem(Product product, int quantity) {
-            this.product = product;
-            this.quantity = quantity;
-        }
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
 
-        public Product getProduct() { return product; }
-        public void setProduct(Product product) { this.product = product; }
-        public int getQuantity() { return quantity; }
-        public void setQuantity(int quantity) { this.quantity = quantity; }
+    public int getTotalQuantity() {
+        return items.values().stream().mapToInt(Integer::intValue).sum();
     }
 }
+
