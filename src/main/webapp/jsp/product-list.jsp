@@ -26,11 +26,8 @@
 
                 <p class="stock">Stock: ${product.stockQuantity}</p>
 
-                <form action="${pageContext.request.contextPath}/shopping/cart" method="post">
-                    <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="productId" value="${product.id}">
-                    <button type="submit" class="cta-button">Add to Cart</button>
-                </form>
+                <button onclick="addToCart(${product.id})" class="cta-button">Add to Cart</button>
+
 
             </div>
         </c:forEach>

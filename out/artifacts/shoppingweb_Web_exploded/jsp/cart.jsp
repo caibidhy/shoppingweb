@@ -42,11 +42,7 @@
                             <p>Price: $${item.price}</p>
                             <p>Quantity: ${item.quantity}</p>
                         </div>
-                        <form action="${pageContext.request.contextPath}/shopping/cart" method="post">
-                            <input type="hidden" name="action" value="remove" />
-                            <input type="hidden" name="productId" value="${item.productId}" />
-                            <button type="submit" class="remove-button">Remove</button>
-                        </form>
+                        <button onclick="removeFromCart(${item.productId})" class="remove-button">Remove</button>
                     </div>
                 </c:forEach>
             </div>
@@ -65,14 +61,7 @@
         </c:if>
     </div>
 </main>
-
-<jsp:include page="/jsp/footer.jsp" />
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-<script>
-    function checkout() {
-        alert("Implement your checkout logic here.");
-    }
-</script>
 </body>
 </html>
 
