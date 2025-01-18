@@ -1,23 +1,48 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>My Orders</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 <body>
-<h1>My Orders</h1>
-<c:forEach var="order" items="${orders}">
-    <div class="order-box">
-        <p>Order ID: ${order.id}</p>
-        <p>Total Price: $${order.totalPrice}</p>
-        <p>Create Time: ${order.createTime}</p>
-        <c:forEach var="item" items="${order.items}">
-            <div class="order-item">
-                Product ID: ${item.productId} <br>
-                Quantity: ${item.quantity} <br>
-                Unit Price: $${item.unitPrice} <br>
+<jsp:include page="/jsp/header.jsp" />
+
+<main>
+    <div class="container">
+        <h1>My Orders</h1>
+
+        <c:if test="${empty orders}">
+            <div class="cart-empty-state">
+                <p>You haven't placed any orders yet.</p>
+                <a href="${pageContext.request.contextPath}/shopping/products" class="cta-button">Start Shopping</a>
             </div>
-        </c:forEach>
+        </c:if>
+
+        <c:if test="${not empty orders}">
+            <c:forEach var="order" items="${orders}">
+                <div class="order-box">
+                    <h3>Order ID: ${order.id}</h3>
+                    <p>Order Date: ${order.createTime}</p>
+                    <p>Total Amount: $${order.totalPrice}</p>
+
+                    <div class="order-items">
+                        <h4>Order Items:</h4>
+                        <c:forEach var="item" items="${order.orderItems}">
+                            <div class="order-item">
+                                <p>Product ID: ${item.productId}</p>
+                                <p>Quantity: ${item.quantity}</p>
+                                <p>Unit Price: $${item.unitPrice}</p>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
     </div>
-</c:forEach>
+</main>
+
+<jsp:include page="/jsp/footer.jsp" />
 </body>
 </html>

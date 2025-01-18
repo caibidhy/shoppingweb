@@ -463,5 +463,39 @@ footer {
             opacity: 1;
         }
     }
+
+    .order-box {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+    }
+
+    .order-box h3 {
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .order-items {
+        margin-top: 15px;
+    }
+
+    .order-items h4 {
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .order-item {
+        background-color: #f8f9fa;
+        border-left: 3px solid #007bff;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .order-item p {
+        margin: 5px 0;
+        color: #333;
+    }
 }
 

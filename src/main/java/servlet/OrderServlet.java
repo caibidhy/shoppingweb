@@ -24,23 +24,30 @@ public class OrderServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
-        // 未登录跳转
+
         if (username == null) {
-            request.setAttribute("message", "Please login first.");
-            request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/shopping/login");
             return;
         }
 
-        int userId = userDAO.getUserIdByUsername(username);
+        try {
+            int userId = userDAO.getUserIdByUsername(username);
+            List<Order> orders = orderDAO.findOrdersByUser(userId);
 
-        // 从 orders 表拿到该用户所有订单
-        List<Order> orders = orderDAO.findOrdersByUser(userId);
-        for (Order o : orders) {
-            List<OrderItem> items = orderDAO.findOrderItems(o.getId());
-            o.setOrderItems(items);
+            if (orders != null) {
+                for (Order order : orders) {
+                    List<OrderItem> items = orderDAO.findOrderItems(order.getId());
+                    order.setOrderItems(items);
+                }
+            }
+
+            request.setAttribute("orders", orders);
+            request.getRequestDispatcher("/jsp/orders.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Failed to load orders. Please try again later.");
+            request.getRequestDispatcher("/jsp/orders.jsp").forward(request, response);
         }
-
-        request.setAttribute("orders", orders);
-        request.getRequestDispatcher("/jsp/orders.jsp").forward(request, response);
     }
 }
