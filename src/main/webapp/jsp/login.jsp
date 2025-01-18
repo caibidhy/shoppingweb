@@ -38,7 +38,10 @@
             </div>
             <button type="submit" class="cta-button">Login</button>
         </form>
-        <p class="form-footer">Don't have an account? <a href="${pageContext.request.contextPath}/shopping/register">Register here</a></p>
+        <div class="form-footer">
+            <p>Don't have an account? <a href="${pageContext.request.contextPath}/shopping/register">Register here</a></p>
+            <p>Want to change password? <a href="${pageContext.request.contextPath}/shopping/changePassword">Change Password</a></p>
+        </div>
     </div>
 </main>
 

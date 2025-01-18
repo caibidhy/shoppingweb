@@ -151,6 +151,23 @@ public class DatabaseUtil {
         }
         return -1;
     }
+
+    public static boolean updatePassword(String username, String newPassword) {
+        if ("admin".equals(username)) {
+            return false;
+        }
+
+        String sql = "UPDATE users SET password = ? WHERE username = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newPassword);
+            ps.setString(2, username);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
 
 

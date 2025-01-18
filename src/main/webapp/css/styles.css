@@ -590,6 +590,13 @@ footer {
         background-color: #c82333;
     }
 
-
+    .info-message {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+    }
 }
 

@@ -201,12 +201,21 @@
 
             formData.append('action', 'edit');
             formData.append('id', productId);
-            formData.append('name', row.querySelector('input[type="text"]').value);
-            formData.append('description', row.querySelectorAll('input[type="text"]')[0].value);
-            formData.append('price', row.querySelector('input[type="number"]').value);
-            formData.append('stockQuantity', row.querySelectorAll('input[type="number"]')[1].value);
 
-            const imageInput = row.querySelector('input[type="file"]');
+            // 修正获取 name 和 description 的方式
+            const name = row.cells[2].querySelector('input[type="text"]').value;
+            const description = row.cells[3].querySelector('input[type="text"]').value;
+            formData.append('name', name);
+            formData.append('description', description);
+
+            // 修正获取 price 和 stockQuantity 的方式
+            const price = row.cells[4].querySelector('input[type="number"]').value;
+            const stockQuantity = row.cells[5].querySelector('input[type="number"]').value;
+            formData.append('price', price);
+            formData.append('stockQuantity', stockQuantity);
+
+            // 获取图片文件
+            const imageInput = row.cells[1].querySelector('input[type="file"]');
             if (imageInput.files.length > 0) {
                 formData.append('image', imageInput.files[0]);
             }
@@ -218,7 +227,14 @@
         });
 
         Promise.all(promises)
-            .then(() => window.location.reload())
+            .then(responses => {
+                // 检查所有响应
+                if (responses.every(response => response.ok)) {
+                    window.location.reload();
+                } else {
+                    throw new Error('One or more updates failed');
+                }
+            })
             .catch(error => {
                 console.error('Error saving changes:', error);
                 alert('Failed to save some changes');
