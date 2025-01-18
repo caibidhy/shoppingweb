@@ -4,6 +4,7 @@ import dao.CartDAO;
 import dao.OrderDAO;
 import dao.UserDAO;
 import model.CartItemDTO;
+import dao.ProductDAO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -91,8 +92,21 @@ public class CartServlet extends HttpServlet {
                                  int userId, HttpSession session) throws IOException {
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
+            ProductDAO productDAO = new ProductDAO();
+
+            // 添加库存检查
+            if (!productDAO.hasEnoughStock(productId, 1)) {
+                sendErrorResponse(response, "Sorry, this item is out of stock");
+                return;
+            }
+
             int oldQty = cartDAO.findCartQuantity(userId, productId);
             if (oldQty >= 1) {
+                // 增加数量时也要检查库存
+                if (!productDAO.hasEnoughStock(productId, oldQty + 1)) {
+                    sendErrorResponse(response, "Not enough stock available");
+                    return;
+                }
                 cartDAO.updateCartItemQuantity(userId, productId, oldQty + 1);
             } else {
                 cartDAO.addCartItem(userId, productId, 1);
@@ -120,41 +134,48 @@ public class CartServlet extends HttpServlet {
 
     private void handleCheckout(HttpServletRequest request, HttpServletResponse response,
                                 int userId) throws IOException {
-        // 1. 查询购物车
         List<CartItemDTO> cartItems = cartDAO.findCartItemsByUser(userId);
         if (cartItems == null || cartItems.isEmpty()) {
             sendErrorResponse(response, "Cart is empty");
             return;
         }
 
-        // 2. 计算总价
+        // 添加库存检查
+        ProductDAO productDAO = new ProductDAO();
+        for (CartItemDTO item : cartItems) {
+            if (!productDAO.hasEnoughStock(item.getProductId(), item.getQuantity())) {
+                sendErrorResponse(response, "Some items in your cart are out of stock");
+                return;
+            }
+        }
+
+        // 计算总价
         BigDecimal totalPrice = BigDecimal.ZERO;
         for (CartItemDTO item : cartItems) {
             BigDecimal line = item.getPrice().multiply(new BigDecimal(item.getQuantity()));
             totalPrice = totalPrice.add(line);
         }
 
-        // 3. 创建订单
+        // 创建订单
         int orderId = orderDAO.createOrder(userId, totalPrice);
         if (orderId <= 0) {
             sendErrorResponse(response, "Failed to create order");
             return;
         }
 
-        // 4. 把cartItems写进order_items
+        // 把cartItems写进order_items
         orderDAO.addOrderItems(orderId, cartItems);
 
-        // 5. 减库存
+        // 减库存
         orderDAO.updateStock(cartItems);
 
-        // 6. 清空购物车
+        // 清空购物车
         cartDAO.clearCartByUser(userId);
 
-        // 7. 返回成功JSON
         sendSuccessResponse(response, "Checkout successful");
     }
 
-    // ---- 工具方法：返回JSON ----
+
     private void sendErrorResponse(HttpServletResponse response, String msg)
             throws IOException {
         response.setContentType("application/json;charset=UTF-8");

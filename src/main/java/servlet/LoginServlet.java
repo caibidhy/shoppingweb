@@ -22,7 +22,14 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
 
-            // 处理购物车同步
+            // 添加管理员检查
+            if ("admin".equals(username) && "admin".equals(password)) {
+                session.setAttribute("role", "admin");
+                response.sendRedirect(request.getContextPath() + "/shopping/admin/products");
+                return;
+            }
+
+            // 处理普通用户的购物车同步
             Cart sessionCart = (Cart) session.getAttribute("cart");
             Map<Integer, Integer> dbCart = DatabaseUtil.getCartItems(username);
 

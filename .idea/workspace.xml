@@ -12,6 +12,17 @@
     <list default="true" id="199b5dae-b05e-4ea6-abea-34d19808298c" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/../shoppingweb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/CartServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/WEB-INF/classes/servlet/CartServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/shoppingweb_Web_exploded/jsp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shoppingweb/servlet/CartServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shoppingweb/servlet/CartServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/CartServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/CartServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +214,7 @@
       <workItem from="1736990695976" duration="1805000" />
       <workItem from="1737024827127" duration="3708000" />
       <workItem from="1737177134391" duration="101000" />
-      <workItem from="1737177275785" duration="4818000" />
+      <workItem from="1737177275785" duration="16803000" />
     </task>
     <servers />
   </component>

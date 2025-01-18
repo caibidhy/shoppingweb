@@ -41,5 +41,20 @@ public class UserDAO {
         return false;
     }
 
+    public String getUserRole(String username) {
+        String sql = "SELECT role FROM users WHERE username = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("role");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "user";  // 默认返回普通用户角色
+    }
 }
 
